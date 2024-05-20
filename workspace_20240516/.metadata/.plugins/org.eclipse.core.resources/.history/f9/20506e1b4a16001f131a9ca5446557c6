@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- Setter 주입 -->
+	<!-- 
+	<bean id="greeting" class="net.developia.xcispring01.di101e.OutputterImpl">
+		<property name="name" value="서태지" />
+		<property name="greeting" value="안녕하세요~" />
+		<property name="fileOutputter" value="fileOutputter" />
+	</bean>
+	
+	
+	<bean id="fileOutputter" class="net.developia.xcispring01.di101e.FileOutputterImpl">
+		<property name="fileName" value="output.txt"/>
+	</bean>
+	-->
+	 
+	 
+	 <!-- Constructor 주입 -->
+	 <bean name="greeting" 
+		class="net.developia.xcispring01.di102e.OutputterImpl">
+		<!-- 생성자 주입 -->
+		<constructor-arg name="name" value="서태지" />
+		<constructor-arg name="greeting" value="안녕하세요~" />
+		<constructor-arg ref="fileOutputter" />
+	</bean>
+	
+	<bean id="fileOutputter" class="net.developia.xcispring01.di102e.FileOutputterImpl">
+		<constructor-arg name="fileName" value="output.txt"/>
+	</bean>
+
+</beans>

@@ -1,0 +1,6 @@
+package net.developia.spring01.di301e;
+
+@Configuration
+public class BeanInit {
+
+}

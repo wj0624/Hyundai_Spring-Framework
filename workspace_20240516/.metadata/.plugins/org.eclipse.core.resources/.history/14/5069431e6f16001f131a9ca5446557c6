@@ -1,0 +1,16 @@
+package net.developia.spring01.di301e;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import net.developia.spring01.di301.BeanInit;
+
+public class GreetingTest {
+	public static void main(String[] args) {
+		ApplicationContext context = 
+				new AnnotationConfigApplicationContext(BeanInit.class);
+		
+		Outputter output = (Outputter) context.getBean("outputterImpl");
+		output.greeting();
+	}
+}

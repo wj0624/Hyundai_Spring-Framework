@@ -1,0 +1,22 @@
+package net.developia.spring01.di301;
+
+import java.text.Annotation;
+
+import org.springframework.context.ApplicationContext;
+
+public class TVTest {
+	public static void main(String[] args) {
+		ApplicationContext context = 
+				new Annotation(BeanInit.class);
+		
+		System.out.println("----------------");
+		TV tv = (TV) context.getBean("tv");
+		
+		tv.powerOn(); 
+		tv.channelUp();
+		tv.channelDown();
+		tv.soundUp();
+		tv.soundDown();
+		tv.powerOff();
+	}
+}
