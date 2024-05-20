@@ -1,8 +1,0 @@
-package net.developia.spring01.di301e;
-
-import org.springframework.context.annotation.Configuration;
-
-@Configuration
-public class BeanInit {
-
-}

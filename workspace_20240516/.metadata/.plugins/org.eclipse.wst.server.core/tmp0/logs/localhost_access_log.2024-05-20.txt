@@ -1,4 +1,0 @@
-127.0.0.1 - - [20/May/2024:11:16:43 +0900] "GET / HTTP/1.1" 200 181
-0:0:0:0:0:0:0:1 - - [20/May/2024:11:16:44 +0900] "GET /WEB-INF/classes/net/developia/xcispring01/di201/SamsungTV.java HTTP/1.1" 404 721
-0:0:0:0:0:0:0:1 - - [20/May/2024:11:16:44 +0900] "GET /favicon.ico HTTP/1.1" 404 721
-0:0:0:0:0:0:0:1 - - [20/May/2024:11:30:08 +0900] "GET /WEB-INF/classes/net/developia/xcispring01/di201/SamsungTV.java HTTP/1.1" 404 721

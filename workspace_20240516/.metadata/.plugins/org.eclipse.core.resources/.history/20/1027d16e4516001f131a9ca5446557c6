@@ -1,6 +1,0 @@
-package net.developia.xcispring01.di101e;
-
-public class FileOutputter {
-	public void output(String msg);
-
-}
