@@ -1,0 +1,24 @@
+package net.developia.spring01.di301e;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import net.developia.spring01.di301.HarmanSpeaker;
+import net.developia.spring01.di301.SamsungTV;
+import net.developia.spring01.di301.Speaker;
+import net.developia.spring01.di301.TV;
+
+@Configuration
+public class BeanInit {
+//	@Bean
+//	public TV tv() {
+//		return new SamsungTV();
+//	}
+//	
+//	
+//	@Bean
+//	public Speaker speaker() {
+//		return new HarmanSpeaker();
+//	}
+	
+}
