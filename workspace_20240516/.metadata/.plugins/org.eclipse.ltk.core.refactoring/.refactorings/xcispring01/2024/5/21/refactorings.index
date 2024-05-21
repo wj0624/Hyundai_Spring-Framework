@@ -25,3 +25,7 @@
 1716191137216	Rename package 'net.developia.xcispring01'
 1716191451402	Rename package 'net.developia.xcispring01.sample'
 1716195048155	Copy compilation unit
+1716200073194	Delete element
+1716250986455	Rename resource 'KakaoTalk_20240507_133307821.png'
+1716251144365	Move 'bunny.png' to 'img'
+1716276482868	Move 'TimeMapper.xml' to 'mapper'

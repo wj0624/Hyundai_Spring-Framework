@@ -1,0 +1,5 @@
+package net.developia.xcispring01.mapper;
+
+public interface TimeMapper {
+
+}
