@@ -11,6 +11,7 @@
 		]]>
 	</select>
 	
+	<!-- create -->
 	<insert id="insert">
 		insert into tbl_board (bno, title, content, writer)
 		values(seq_board.nextval, #{title}, #{content}, #{writer})
@@ -24,5 +25,28 @@
 		insert into tbl_board (bno, title, content, writer)
 		values(#{bno}, #{title}, #{content}, #{writer})
 	</insert>
+	
+	<!-- read -->
+	<select id="read" resultType="BoardVO">
+		select bno, title, content, writer, regdate, updatedate
+		from tbl_board
+		where bno = #{bno}
+	</select>
+	
+	<!-- update -->
+	<update id="update">
+		update tbl_board
+		set title = #{title},
+		content = #{content},
+		writer = #{writer},
+		updateDate = sysdate
+		where bno = #{bno}
+	</update>
+	
+	<!-- delete -->
+	<delete id="delete">
+		delete from tbl_board
+		where bno=#{bno}
+	</delete>
 	
 </mapper>
