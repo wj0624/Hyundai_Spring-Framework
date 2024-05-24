@@ -33,7 +33,7 @@
            				<input class="form-control" name='writer'>
            			</div>
            			<button type="submit" class="btn btn-default">Submit Button</button>
-           			<button type="reset" class="btn btno-default">Reset Button</button>
+           			<button type="reset" class="btn btn-default">Reset Button</button>
            		</form>
             </div>
             <!-- end panel-body -->
