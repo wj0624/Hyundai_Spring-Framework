@@ -2,4 +2,5 @@
 <aop-reference-model>
 <aop-project name="xciboard"/>
 <aop-project name="xcispring01"/>
+<aop-project name="xcirestboard"/>
 </aop-reference-model>
