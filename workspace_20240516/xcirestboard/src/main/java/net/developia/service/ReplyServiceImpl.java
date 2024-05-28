@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import lombok.AllArgsConstructor;
 import lombok.extern.java.Log;
 import net.developia.domain.Criteria;
+import net.developia.domain.ReplyPageDTO;
 import net.developia.domain.ReplyVO;
 import net.developia.mapper.ReplyMapper;
 
@@ -42,10 +43,17 @@ public class ReplyServiceImpl implements ReplyService {
 		return mapper.delete(rno);
 	}
 
+
 	@Override
 	public List<ReplyVO> getList(Criteria cri, Long bno) {
 		log.info("get Reply List of a Board " + bno);
 		return mapper.getListWithPaging(cri, bno);
 	}
 
+	@Override
+	public ReplyPageDTO getListPage(Criteria cri, Long bno) {
+		return new ReplyPageDTO(
+				mapper.getCountByBno(bno),
+				mapper.getListWithPaging(cri, bno));
+	}
 }

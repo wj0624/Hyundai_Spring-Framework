@@ -23,13 +23,14 @@ var replyService = (function() {
 	}
 	
 	function getList(param, callback, error) {
-		var bno = param.bno;
-		var page = param.page || 1;
+		let bno = param.bno;
+		let page = param.page || 1;
 		
 		$.getJSON("/replies/pages/"+bno+"/"+page+".json",
 			function(data) {
 				if(callback) {
-					callback(data);
+					//callback(data);
+					callback(data.replyCnt, data.list);
 				}
 			}).fail(function(xhr, status, err) {
 				if(error) {
@@ -88,11 +89,37 @@ var replyService = (function() {
 		});
 	}
 	
+	function displayTime(timeValue) {
+		let today = new Date();
+		let gap = today.getTime() - timeValue;
+		
+		let dateObj = new Date(timeValue);
+		let str = "";
+		
+		if(gap<(1000*60*60*24)) {
+			let hh = dateObj.getHours();
+			let mi = dateObj.getMinutes();
+			let ss = dateObj.getSeconds();
+			
+			return [(hh>9?'':'0')+hh, ':', (mi>9?'':'0')+mi,
+					':',(ss>9?'':'0')+ss].join('');
+		}
+		else {
+			let yy = dateObj.getFullYear();
+			let mm = dateObj.getMonth() + 1; // getMonth()는 0부터 시작
+			let dd = dateObj.getDate();
+			
+			return [yy, '/', (mm>9?'':'0')+mm, '/',
+					(dd>9?'':'0')+dd].join('');
+		}
+	}
+	
 	return {
 		add:add,
+		get:get,
 		getList:getList,
 		remove:remove,
 		update:update,
-		get:get
+		displayTime:displayTime
 	};
 })();

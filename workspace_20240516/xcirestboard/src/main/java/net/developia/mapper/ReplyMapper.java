@@ -24,4 +24,7 @@ public interface ReplyMapper {
 	public List<ReplyVO> getListWithPaging(
 			@Param("cri") Criteria cri, 
 			@Param("bno") Long bno);
+	
+	// 특정 게시물의 댓글 개수 가져오기
+	public int getCountByBno(Long bno);
 }

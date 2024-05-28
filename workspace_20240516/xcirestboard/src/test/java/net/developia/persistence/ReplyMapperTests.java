@@ -81,4 +81,11 @@ public class ReplyMapperTests {
 		List<ReplyVO> replies = mapper.getListWithPaging(cri, bnoArr[0]);
 		replies.forEach(reply->log.info("*******testList"+reply));
 	}
+	
+	@Test
+	public void testList2() {
+		Criteria cri = new Criteria(2, 10);
+		List<ReplyVO> replies = mapper.getListWithPaging(cri, 2621446L);
+		replies.forEach(reply->log.info(reply));
+	}
 }

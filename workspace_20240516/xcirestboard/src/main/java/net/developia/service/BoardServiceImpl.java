@@ -19,20 +19,16 @@ public class BoardServiceImpl implements BoardService{
 	
 	@Override
 	public void register(BoardVO board) throws Exception {
-		try {
-			log.info("register......" + board);
-			mapper.insertSelectkey(board);
-		} catch (Exception e) {
-			log.info(e.getMessage());
-			throw e;
-		}
-			
+		log.info("register......" + board);
+		mapper.insertSelectkey(board);
 	}
 
 	@Override
 	public BoardVO get(Long bno) {
 		log.info("get......" + bno);
-		return mapper.read(bno);
+		BoardVO vo = mapper.read(bno);
+		if(vo == null) throw new RuntimeException(bno +"번 게시물이 존재하지 않음");
+		return vo;
 	}
 
 	@Override

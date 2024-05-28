@@ -1,7 +1,5 @@
 package net.developia.controller;
 
-import java.util.List;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import lombok.AllArgsConstructor;
 import lombok.extern.java.Log;
 import net.developia.domain.Criteria;
+import net.developia.domain.ReplyPageDTO;
 import net.developia.domain.ReplyVO;
 import net.developia.service.ReplyService;
 
@@ -43,12 +42,12 @@ public class ReplyController {
 	@GetMapping(value="/pages/{bno}/{page}",
 				produces= {MediaType.APPLICATION_XML_VALUE,
 							MediaType.APPLICATION_JSON_UTF8_VALUE})
-	public ResponseEntity<List<ReplyVO>> getList(@PathVariable("page") int page, @PathVariable("bno") Long bno){
-		log.info("Get List........");
+	public ResponseEntity<ReplyPageDTO> getList(@PathVariable("page") int page, @PathVariable("bno") Long bno){
 		Criteria cri = new Criteria(page, 10);
-		log.info("Criteria : "+ cri);
+		log.info("get Reply List bno: "+bno);
+		log.info("cri: "+ cri);
 		
-		return new ResponseEntity<>(service.getList(cri, bno), HttpStatus.OK);
+		return new ResponseEntity<>(service.getListPage(cri, bno), HttpStatus.OK);
 	}
 	
 	@GetMapping(value="/{rno}",
