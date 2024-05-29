@@ -81,10 +81,10 @@
 					<li class="left clearfix" data-rno='12'>
 						<div>
 							<div class="header">
-								<strong class="primary-font">user00</strong>
-								<small class="pull-right text-muted">2018-01-01 13:13</small>
+								<strong class="primary-font">김지수 바보</strong>
+								<small class="pull-right text-muted"></small>
 							</div>
-							<p>Good job!</p>
+							<p>ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ</p>
 						</div>
 					</li>
 					<!-- end reply -->
@@ -184,6 +184,7 @@
 					let str="";
 					
 					if(list===null || list.length===0){
+						replyUL.html("");
 						return;
 					}
 					
