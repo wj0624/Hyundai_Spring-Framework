@@ -39,10 +39,16 @@ public class BoardController {
 	}
 	
 	@PostMapping("/register")
-	public String register(BoardVO board, RedirectAttributes rttr) throws Exception {
+	public String register(BoardVO board, RedirectAttributes rttr) {
+		log.info("===========================");
 		log.info("register: "+board);
-		service.register(board);
-		rttr.addFlashAttribute("result", board.getBno());
+		
+		if(board.getAttachList()!=null) {
+			board.getAttachList().forEach(attach -> log.info(attach.toString()));
+		}
+		log.info("===========================");
+		//service.register(board);
+		//rttr.addFlashAttribute("result", board.getBno());
 		return "redirect:/board/list";
 	}
 	

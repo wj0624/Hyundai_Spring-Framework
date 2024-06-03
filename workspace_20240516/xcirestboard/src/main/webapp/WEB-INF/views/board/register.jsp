@@ -128,6 +128,18 @@
 		$("button[type='submit']").on("click", function(e) {
 			e.preventDefault();
 			console.log("submit clicked");
+			
+			let str = "";
+			$(".uploadResult ul li").each(function(i, obj){
+				let jobj = $(obj);
+				console.dir(jobj);
+				
+				str += `<input type='hidden' name='attachList[\${i}].fileName' value='\${jobj.data("filename")}'>
+						<input type='hidden' name='attachList[\${i}].uuid' value='\${jobj.data("uuid")}'>
+						<input type='hidden' name='attachList[\${i}].uploadPath' value='\${jobj.data("path")}'>
+						<input type='hidden' name='attachList[\${i}].fileType' value='\${jobj.data("type")}'>`;
+			});
+			formObj.append(str).submit();
 		});
 	
 		let regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$");
@@ -145,8 +157,6 @@
 			}
 			return true;
 		}
-		
-		//let cloneObj = $(".uploadDiv").clone();
 		
 		$("input[type='file']").change(function(e){
 			let formData = new FormData();
@@ -171,10 +181,8 @@
 				success: function(result){
 					console.log(result);
 					showUploadResult(result);
-					//$(".uploadDiv").html(cloneObj.html());
 				}
 			});
-			
 			
 			//let uploadResult = $(".uploadResult ul");
 			
@@ -190,60 +198,46 @@
 					
 					if(obj.image){
 						let fileCallPath = encodeURIComponent(obj.uploadPath+"/s_"+obj.uuid+"_"+obj.fileName);
-						//let originPath = obj.uploadPath + "\\" + obj.uuid + "_" + obj.fileName;
-						//originPath = originPath.replace(new RegExp(/\\/g),"/");
 						
-						str += `<li>
+						str += `<li data-path='\${obj.uploadPath}' data-uuid='\${obj.uuid}'
+									data-filename='\${obj.fileName}' data-type='\${obj.image}'>
 								<div>
 									<span>\${obj.fileName}</span>
-									<button type='button' class='btn btn-warning btn-circle'>
+									<button type='button' data-file=\${fileCallPath} 
+											data-type='image' class='btn btn-warning btn-circle'>
 										<i class='fa fa-times'></i>
 									</button><br>
 									<img src='/display?fileName=\${fileCallPath}'>
  								</div>
 								</li>`;
-						/*
-						str += `<li>
-									<a href="javascript:showImage('\${originPath}')">
-									<img src='/display?fileName=\${fileCallPath}'></a>
-									<span data-file='\${fileCallPath}' data-type='image'> x </span>
-								</li>`;
-						*/
 					}
 					else {
 						let fileCallPath = encodeURIComponent(obj.uploadPath+"/"+obj.uuid+"_"+obj.fileName);
 						let fileLink = fileCallPath.replace(new RegExp(/\\/g),"/");
 						
-						
-						str += `<li>
+						str += `<li data-path='\${obj.uploadPath}' data-uuid='\${obj.uuid}'
+									data-filename='\${obj.fileName}' data-type='\${obj.image}'>
 								<div>
 									<span>\${obj.fileName}</span>
-									<button type='button' class='btn btn-warning btn-circle'>
+									<button type='button' data-file=\${fileCallPath} 
+											data-type='file' class='btn btn-warning btn-circle'>
 										<i class='fa fa-times'></i>
 									</button><br>
 									<img src='/resources/img/attach.png'>
 								</div>
 								</li>`;
-								
-						/*
-						str += `<li>
-									<div>
-										<a href='/download?fileName=\${fileCallPath}'>
-										<img src='/resources/img/attach.png'> \${obj.fileName}</a>
-										<span data-file='\${fileCallPath}' data-type='file'> x </span>
-									</div>
-								</li>`;
-						*/
 					}
 				});
 				uploadUL.append(str);
 			}
 			
-			/*
-			$(".uploadResult").on("click", "span", function(e){
+			$(".uploadResult").on("click", "button", function(e){
+				console.log("delete file");
+				
 				let targetFile = $(this).data("file");
 				let type = $(this).data("type");
-				console.log(targetFile);
+
+				let targetLi = $(this).closest("li");
 				
 				$.ajax({
 					url: '/deleteFile',
@@ -252,10 +246,11 @@
 					type: 'POST',
 					success: function(result){
 						alert(result);
+						targetLi.remove();
 					}
 				});
 			});
-			*/
+			
 		});
 	});
 </script>
