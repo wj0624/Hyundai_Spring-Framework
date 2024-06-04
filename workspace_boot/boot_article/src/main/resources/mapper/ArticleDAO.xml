@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.developia.boot_article.dao.ArticleDAO">
+	<insert id="insertArticle" parameterType="ArticleDTO">
+		insert into article(no, name, title, content, password)
+		values(s_article.nextval, #{name}, #{title}, #{content}, #{password} )
+	</insert>
+</mapper>
